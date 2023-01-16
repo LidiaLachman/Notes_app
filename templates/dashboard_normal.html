@@ -1,0 +1,27 @@
+{% extends "basic.html" %}
+
+{% block title%} Dashboard {% endblock %}
+
+{% block content %}
+	<h1> Welcome to normal notes mode! </h1>
+	<h2> Add notes: </h2>
+	    <form action="" method="post">
+            <div class="input-group">
+                <textarea id="markdown" name="note" rows="20" cols="100"></textarea><br>
+                <input type="submit" value="Add" >
+            </div>
+        </form><br>
+	
+	<h3><a href="{{url_for('menu')}}">Back to menu</a><br>
+	<a href="{{url_for('logout')}}">Logout</a></h3>
+
+	{% if notes|length > 0 %}
+	<h1> Your notes: </h1>
+	<ul class="list-group mb-3">
+        {% for note in notes %}
+            <li class="list-group-item"> {{ note.name }} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+	
+{% endblock %}

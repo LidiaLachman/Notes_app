@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+</style>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1> Welcome to encrypted notes mode!</h1>
+
+<table style="width: 60" align="left">
+        <tr>
+            <th> Decrypted note: </th>
+        </tr>
+    {% for msg in get_flashed_messages() %}
+            <tr>
+                <td>{{msg}}</td>
+            </tr>
+    {% endfor %}
+</table><br>
+
+    
+    <table style="width: 60" align="center">
+        <tr>
+            <th> Tag </th>
+            <th> Note </th>
+            <th> Delete </th>
+        </tr>
+        {% for pswd in passwrd_list %}
+        <tr>
+            <td>{{pswd.tag}}</td>
+            <td><a href="{{url_for('show',id=pswd.id)}}">Show note</a></td>
+            <td><a href="{{url_for('delete',id=pswd.id)}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><h3>
+    <a href="{{url_for('dashboard_add')}}">Add encrypted note</a><br>
+    <a href="{{url_for('menu')}}">Back to menu</a><br>
+    <a href="{{url_for('logout')}}">Logout</a></h3>
+</body>
+</html>

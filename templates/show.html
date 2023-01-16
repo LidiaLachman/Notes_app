@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Enter credential</title>
+</head>
+<body>
+    <h2> Write your secret password below and click enter to confirm:</h2>
+    <form method="post" action="">
+        {{form.hidden_tag()}}
+        {{form.password}}
+        {{form.submit}}
+    </form>
+
+    {% for msg in get_flashed_messages() %}
+        <font color ="red">{{msg}}</font>
+    {% endfor %}
+    <br><h3>
+    <a href ="{{url_for('dashboard')}}"> Back to dashboard</a></h3>
+</body>
+</html> 
