@@ -4,5 +4,5 @@ from models import clear_data
 
 if __name__ == '__main__':
     clear_data()
-    app.run(ssl_context=('cert/certificate.crt', 'cert/myTest.key')) # jesli nie dziala prosze zakomentowac
-    #app.run()                                                       # i odkomentowac ta linie
+    app.run(host='0.0.0.0')
+    #app.run(host='0.0.0.0' , ssl_context=("cert/cert.pem","cert/key.pem"))
