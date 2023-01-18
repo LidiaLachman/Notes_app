@@ -1,15 +1,7 @@
-FROM python:3.8-alpine
-WORKDIR /home
-RUN apk upgrade --update
-RUN apk add --no-cache gcc musl-dev linux-headers libffi-dev
+# syntax=docker/dockerfile:1
+FROM python:3.8-slim-buster
+WORKDIR /python-docker
 COPY requirements.txt .
-RUN python3 -m pip install -r requirements.txt
-COPY __run__.py .
-COPY app.py .
-COPY forms.py .
-COPY models.py .
-COPY routes.py .
-COPY instance ./instance
-COPY cert ./cert
-COPY templates ./templates
-CMD [ "python3", "app.py" ]
+RUN pip3 install -r requirements.txt
+COPY . .
+CMD [ "python3", "__run__.py" ]
